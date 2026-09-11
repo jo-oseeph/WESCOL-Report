@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import "../styles/LandingPage.css";
 
 function LandingPage({ onEnter }) {
@@ -25,9 +25,7 @@ function LandingPage({ onEnter }) {
             HR a single place to access the reports relevant to their role
             &mdash; consistent, organized and easy to navigate.
           </p>
-          <button className="landing-cta" onClick={onEnter}>
-            Access Reporting Dashboard
-          </button>
+         <Link className="landing-cta" to="/dashboard">Access Reporting Dashboard</Link>
         </div>
       </main>
 

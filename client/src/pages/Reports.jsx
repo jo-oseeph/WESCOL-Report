@@ -1,28 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { reportCategories } from "../data/reportsData";
 import CategoryTabs from "../components/CategoryTabs.jsx";
 import ReportViewer from "../components/ReportViewer.jsx";
 import "../styles/Reports.css";
 
-function Reports({ onBreadcrumbChange }) {
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [selectedSubcategory, setSelectedSubcategory] = useState(null);
-  const [selectedReport, setSelectedReport] = useState(null);
+function Reports() {
+  const { categoryId, subcategoryId, reportId } = useParams();
+  const navigate = useNavigate();
 
-  function updateBreadcrumb(category, subcategory, report) {
-    if (!onBreadcrumbChange) return;
-    onBreadcrumbChange(
-      [category?.name, subcategory?.name, report?.name].filter(Boolean)
-    );
-  }
+  const selectedCategory = reportCategories.find((c) => c.id === categoryId) || null;
+  const selectedSubcategory =
+    selectedCategory?.subcategories.find((s) => s.id === subcategoryId) || null;
+  const selectedReport =
+    selectedSubcategory?.reports.find((r) => r.id === reportId) || null;
 
-  // The menu is hover-driven now, so category/subcategory are only ever
-  // "selected" together with the report the user actually clicked.
   function handleSelectReport(category, subcategory, report) {
-    setSelectedCategory(category);
-    setSelectedSubcategory(subcategory);
-    setSelectedReport(report);
-    updateBreadcrumb(category, subcategory, report);
+    navigate(`/dashboard/reports/${category.id}/${subcategory.id}/${report.id}`);
   }
 
   return (
@@ -34,7 +28,6 @@ function Reports({ onBreadcrumbChange }) {
         selectedReport={selectedReport}
         onSelectReport={handleSelectReport}
       />
-
       <section className="reports-content-panel">
         {selectedReport ? (
           <ReportViewer report={selectedReport} key={selectedReport.id} />

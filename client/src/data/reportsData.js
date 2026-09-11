@@ -50,7 +50,7 @@ export const reportCategories = [
         name: "Lead to Service",
         reports: [
           makeReport(
-            "Lease Report",
+            "Lead Report",
             "Summary of farmer land lease agreements currently active with the company.",
             [extraFilters.status],
             buildResults(
