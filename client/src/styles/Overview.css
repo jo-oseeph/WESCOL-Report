@@ -1,0 +1,141 @@
+.overview-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.overview-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.overview-stat-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-left: 3px solid var(--color-primary);
+}
+
+.overview-stat-value {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.overview-stat-label {
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.overview-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.overview-panel-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 14px;
+}
+
+.overview-category-list,
+.overview-recent-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.overview-category-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 13.5px;
+}
+
+.overview-category-list li:last-child {
+  border-bottom: none;
+}
+
+.overview-category-name {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.overview-category-count {
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+  background: var(--color-bg);
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.overview-recent-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border);
+  gap: 12px;
+}
+
+.overview-recent-list li:last-child {
+  border-bottom: none;
+}
+
+.overview-recent-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.overview-recent-name {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.overview-recent-category {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.overview-recent-time {
+  font-size: 12px;
+  color: var(--color-text-soft);
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .overview-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+}

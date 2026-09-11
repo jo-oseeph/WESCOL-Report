@@ -1,0 +1,99 @@
+import React from "react";
+import "../styles/CategoryTabs.css";
+
+// Small chevrons so it's visually obvious each level opens a menu:
+// "v" = opens downward (category -> subcategory), ">" = opens sideways
+// (subcategory -> report), matching the direction each dropdown appears in.
+function ChevronDown() {
+  return (
+    <svg className="menu-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
+      <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function ChevronRight() {
+  return (
+    <svg className="menu-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
+      <path d="M3.5 2L6.5 5L3.5 8" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// Hover-driven cascading menu: Category -> Subcategory dropdown -> Report
+// flyout. Only the final report click fires a callback; hovering just
+// reveals/hides the next level (handled in CSS via :hover).
+function CategoryTabs({
+  categories,
+  selectedCategory,
+  selectedSubcategory,
+  selectedReport,
+  onSelectReport,
+}) {
+  return (
+    <nav className="category-menu">
+      <ul className="category-menu-list">
+        {categories.map((category) => (
+          <li className="category-menu-item" key={category.id}>
+            <button
+              type="button"
+              className={
+                "category-menu-trigger" +
+                (selectedCategory?.id === category.id
+                  ? " category-menu-trigger-active"
+                  : "")
+              }
+            >
+              {category.name}
+              <ChevronDown />
+            </button>
+
+            {/* Opens below the category on hover */}
+            <ul className="subcategory-dropdown">
+              {category.subcategories.map((subcategory) => (
+                <li className="subcategory-item" key={subcategory.id}>
+                  <button
+                    type="button"
+                    className={
+                      "subcategory-trigger" +
+                      (selectedSubcategory?.id === subcategory.id
+                        ? " subcategory-trigger-active"
+                        : "")
+                    }
+                  >
+                    {subcategory.name}
+                    <ChevronRight />
+                  </button>
+
+                  {/* Opens to the side of the subcategory on hover */}
+                  <ul className="report-flyout">
+                    {subcategory.reports.map((report) => (
+                      <li key={report.id}>
+                        <button
+                          type="button"
+                          className={
+                            "report-flyout-item" +
+                            (selectedReport?.id === report.id
+                              ? " report-flyout-item-active"
+                              : "")
+                          }
+                          onClick={() =>
+                            onSelectReport(category, subcategory, report)
+                          }
+                        >
+                          {report.name}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
+export default CategoryTabs;

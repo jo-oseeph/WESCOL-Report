@@ -1,0 +1,92 @@
+:root {
+  /* Brand */
+  --color-primary: #14532d;
+  --color-primary-dark: #0c3a1f;
+  --color-primary-light: #e7f1ea;
+  --color-accent: #b8860b;
+
+  /* Sidebar / structural surfaces */
+  --color-navy: #101a2c;
+  --color-navy-light: #1b2a45;
+  --color-navy-border: #24324a;
+
+  /* Neutrals */
+  --color-bg: #f4f6f8;
+  --color-surface: #ffffff;
+  --color-border: #e2e5ea;
+  --color-text: #1f2937;
+  --color-text-muted: #6b7280;
+  --color-text-soft: #94a3b8;
+
+  /* Status */
+  --color-success: #15803d;
+  --color-warning: #b45309;
+  --color-danger: #b91c1c;
+
+  /* Layout */
+  --sidebar-width: 250px;
+  --topbar-height: 60px;
+  --radius: 6px;
+
+  /* Type */
+  --font-family: "Segoe UI", "Inter", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+select {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c7ccd4;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}

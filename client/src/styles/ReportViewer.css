@@ -1,0 +1,181 @@
+.report-viewer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.report-viewer-header {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.report-viewer-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 6px;
+}
+
+.report-viewer-description {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.report-viewer-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+.report-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.report-filter-group-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+}
+
+.report-date-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.report-filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 170px;
+}
+
+.report-filter-field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.report-filter-field input,
+.report-filter-field select {
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 13px;
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+
+.report-filter-field input:focus,
+.report-filter-field select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.report-filter-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.report-generate-btn {
+  padding: 9px 22px;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.report-generate-btn:hover {
+  background: var(--color-primary-dark);
+}
+
+.report-results {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.report-results-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.report-results-count {
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.report-results-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.report-action-btn {
+  padding: 7px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.report-action-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary-dark);
+}
+
+.report-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.report-table thead th {
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  text-align: left;
+  font-weight: 600;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.report-table tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.report-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.report-table tbody tr:hover {
+  background: var(--color-bg);
+}

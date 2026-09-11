@@ -1,0 +1,38 @@
+.reports-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.reports-content-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  min-height: 420px;
+}
+
+.reports-empty-state {
+  height: 100%;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  padding: 40px;
+}
+
+.reports-empty-state h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.reports-empty-state p {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  max-width: 360px;
+  line-height: 1.6;
+}
