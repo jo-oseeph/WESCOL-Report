@@ -1,13 +1,14 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "../styles/Sidebar.css";
 
 const navItems = [
-  { key: "home", label: "Home" },
-  { key: "overview", label: "Overview" },
-  { key: "reports", label: "Reports" },
+  { to: "/dashboard", label: "Home", end: true },
+  { to: "/dashboard/overview", label: "Overview" },
+  { to: "/dashboard/reports", label: "Reports" },
 ];
 
-function Sidebar({ activeSection, onSelectSection, className = "" }) {
+function Sidebar({ className = "", onNavigate }) {
   return (
     <aside className={"sidebar " + className}>
       <div className="sidebar-brand">
@@ -22,16 +23,17 @@ function Sidebar({ activeSection, onSelectSection, className = "" }) {
         <span className="sidebar-nav-label">Menu</span>
         <ul>
           {navItems.map((item) => (
-            <li key={item.key}>
-              <button
-                className={
-                  "sidebar-nav-item" +
-                  (activeSection === item.key ? " sidebar-nav-item-active" : "")
+            <li key={item.to}>
+              <NavLink
+                to={item.to}
+                end={item.end}
+                onClick={onNavigate}
+                className={({ isActive }) =>
+                  "sidebar-nav-item" + (isActive ? " sidebar-nav-item-active" : "")
                 }
-                onClick={() => onSelectSection(item.key)}
               >
                 {item.label}
-              </button>
+              </NavLink>
             </li>
           ))}
         </ul>

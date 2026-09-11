@@ -81,6 +81,7 @@
 }
 
 .sidebar-nav-item {
+  display: block;
   width: 100%;
   text-align: left;
   background: transparent;

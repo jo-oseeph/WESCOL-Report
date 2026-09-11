@@ -1,15 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import LandingPage from "./pages/LandingPage.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
+import Home from "./pages/Home.jsx";
+import Overview from "./pages/Overview.jsx";
+import Reports from "./pages/Reports.jsx";
 
 function App() {
-  const [view, setView] = useState("landing"); // "landing" | "dashboard"
+  return (
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
 
-  if (view === "dashboard") {
-    return <Dashboard />;
-  }
+      <Route path="/dashboard" element={<Dashboard />}>
+        <Route index element={<Home />} />
+        <Route path="overview" element={<Overview />} />
+        <Route path="reports" element={<Reports />} />
+        <Route
+          path="reports/:categoryId/:subcategoryId/:reportId"
+          element={<Reports />}
+        />
+      </Route>
 
-  return <LandingPage onEnter={() => setView("dashboard")} />;
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
 }
 
 export default App;
