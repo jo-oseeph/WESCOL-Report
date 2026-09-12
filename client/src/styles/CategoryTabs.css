@@ -1,10 +1,12 @@
 .category-menu {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 4px 8px;
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 9px 0;
   position: relative;
-  z-index: 5;
+  z-index: 1;
+  box-shadow: none;
 }
 
 .category-menu-list {
@@ -13,6 +15,7 @@
   padding: 0;
   display: flex;
   flex-wrap: wrap;
+  gap: 4px;
 }
 
 .category-menu-item {
@@ -25,21 +28,22 @@
   gap: 6px;
   background: transparent;
   border: none;
-  padding: 12px 16px;
+  padding: 13px 16px;
   font-size: 13.5px;
   font-weight: 600;
-  color: var(--color-text);
-  border-radius: var(--radius);
+  color: #e7f1ea;
+  border-radius: 8px;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .category-menu-item:hover > .category-menu-trigger,
 .category-menu-trigger-active {
-  background: var(--color-primary-light);
-  color: var(--color-primary-dark);
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
 }
 
 .menu-chevron {
-  color: var(--color-text-soft);
+  color: #b9d4c0;
   flex: none;
 }
 
@@ -51,9 +55,9 @@
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 230px;
+  min-width: 260px;
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  border: 1px solid #d8e4dc;
   border-radius: var(--radius);
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
   opacity: 0;
@@ -81,12 +85,13 @@
   gap: 8px;
   background: transparent;
   border: none;
-  padding: 9px 10px;
+  padding: 11px 12px;
   font-size: 13px;
   font-weight: 500;
   color: var(--color-text);
   border-radius: 4px;
   text-align: left;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .subcategory-item:hover > .subcategory-trigger,
@@ -105,7 +110,7 @@
   top: 0;
   left: 100%;
   margin-left: 4px;
-  min-width: 230px;
+  min-width: 290px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
@@ -128,8 +133,9 @@
   text-align: left;
   background: transparent;
   border: none;
-  padding: 8px 10px;
+  padding: 10px 12px;
   font-size: 12.5px;
+  line-height: 1.35;
   color: var(--color-text-muted);
   border-radius: 4px;
 }

@@ -1,9 +1,4 @@
 // Dummy hierarchical location data used by the standard report location filter.
-// Levels: Plant -> Region -> Zone -> Section -> Sublocation -> Village
-// Every node has a unique `id` (used for lookups/state) and a short `name`
-// (used for display). Deeper levels are generated generically so this file
-// stays small and easy to extend later with real data.
-
 export const LOCATION_LEVELS = [
   "Plant",
   "Region",

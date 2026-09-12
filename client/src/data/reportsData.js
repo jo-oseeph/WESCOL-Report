@@ -1,10 +1,5 @@
 // Dummy static data for the WEKSCOL Report prototype.
 // Structure: Category -> Subcategory -> Report
-//
-// Every report viewer always shows two standard filter groups regardless of
-// what's defined here: the Plant/Region/Zone/Section/Sublocation/Village
-// location filter, and a Date From / Date To range. `parameters` below only
-// holds EXTRA fields that are specific to that particular report.
 
 const extraFilters = {
   department: {
@@ -45,6 +40,386 @@ export const reportCategories = [
     name: "Agriculture",
     description: "Field operations, land preparation and cane development reports.",
     subcategories: [
+      {
+        id: "farmer-recruitment",
+        name: "Farmer Recruitment",
+        reports: [
+          makeReport(
+            "Contracted Farmer Area",
+            "Summary of contracted farmers and the total area committed to cane production.",
+            [extraFilters.status],
+            buildResults(
+              ["Farmer No.", "Farmer Name", "Zone", "Contracted Area (ha)", "Status"],
+              6,
+              (i) => [`FRM-${1000 + i}`, `Farmer ${i}`, ["Zone A", "Zone B", "Zone C"][i % 3], `${(i * 3.2).toFixed(1)}`, ["Active", "Pending", "Active"][i % 3]]
+            )
+          ),
+          makeReport(
+            "Field Missing E-Contract",
+            "Identifies contracted farmer fields that do not have a corresponding electronic contract.",
+            [],
+            buildResults(
+              ["Field ID", "Farmer Name", "Zone", "Area (ha)", "Contract Status"],
+              6,
+              (i) => [`FLD-${2000 + i}`, `Farmer ${i}`, ["Zone A", "Zone B", "Zone C"][i % 3], `${(i * 1.8).toFixed(1)}`, "Missing E-Contract"]
+            )
+          ),
+          makeReport(
+            "Contract Signing List",
+            "List of farmer contracts and their current signing progress.",
+            [extraFilters.status],
+            buildResults(
+              ["Contract No.", "Farmer Name", "Zone", "Signing Status", "Signing Date"],
+              6,
+              (i) => [`CTR-${3000 + i}`, `Farmer ${i}`, ["Zone A", "Zone B", "Zone C"][i % 3], ["Signed", "Pending", "Awaiting Review"][i % 3], `2025-0${(i % 9) + 1}-1${i}`]
+            )
+          ),
+          makeReport(
+            "Grower Master Data",
+            "Master list of registered growers and their key registration details.",
+            [],
+            buildResults(
+              ["Grower No.", "Grower Name", "National ID", "Phone Number", "Zone"],
+              6,
+              (i) => [`GRW-${4000 + i}`, `Grower ${i}`, `ID${100000 + i}`, `0712 000 ${String(i).padStart(3, "0")}`, ["Zone A", "Zone B", "Zone C"][i % 3]]
+            )
+          ),
+          makeReport(
+            "Farmer Field Register Report",
+            "Register of farmer fields, ownership details and registered production area.",
+            [],
+            buildResults(
+              ["Field ID", "Farmer Name", "Village", "Area (ha)", "Crop Year"],
+              6,
+              (i) => [`FLD-${5000 + i}`, `Farmer ${i}`, ["Village A", "Village B", "Village C"][i % 3], `${(i * 2.1).toFixed(1)}`, "2025/2026"]
+            )
+          ),
+        ],
+      },
+      {
+        id: "land-preparation",
+        name: "Land Preparation",
+        reports: [
+          makeReport(
+            "Land Preparation Service List",
+            "List of land preparation services requested and scheduled for farmer fields.",
+            [extraFilters.status],
+            buildResults(
+              ["Service No.", "Farmer Name", "Field ID", "Service Type", "Status"],
+              6,
+              (i) => [`LPS-${1000 + i}`, `Farmer ${i}`, `FLD-${6000 + i}`, ["Ploughing", "Harrowing", "Ridging"][i % 3], ["Requested", "Scheduled", "Completed"][i % 3]]
+            )
+          ),
+          makeReport(
+            "Seed Cane Request List",
+            "List of seed cane requests submitted for land preparation and planting activities.",
+            [extraFilters.status],
+            buildResults(
+              ["Request No.", "Farmer Name", "Zone", "Quantity (Tons)", "Status"],
+              6,
+              (i) => [`SCR-${2000 + i}`, `Farmer ${i}`, ["Zone A", "Zone B", "Zone C"][i % 3], `${i * 4}`, ["Submitted", "Approved", "Pending"][i % 3]]
+            )
+          ),
+          makeReport(
+            "Fertilizer Request List",
+            "List of fertilizer requests raised for registered farmer fields.",
+            [extraFilters.status],
+            buildResults(
+              ["Request No.", "Farmer Name", "Fertilizer Type", "Quantity (Bags)", "Status"],
+              6,
+              (i) => [`FTR-${3000 + i}`, `Farmer ${i}`, ["DAP", "CAN", "NPK"][i % 3], `${i * 8}`, ["Submitted", "Approved", "Pending"][i % 3]]
+            )
+          ),
+          makeReport(
+            "Seed Cane Approved",
+            "Approved seed cane requests ready for issue to farmers.",
+            [],
+            buildResults(
+              ["Approval No.", "Farmer Name", "Zone", "Approved Quantity (Tons)", "Approval Date"],
+              6,
+              (i) => [`SCA-${4000 + i}`, `Farmer ${i}`, ["Zone A", "Zone B", "Zone C"][i % 3], `${i * 4}`, `2025-0${(i % 9) + 1}-1${i}`]
+            )
+          ),
+          makeReport(
+            "Goods Issue by Seed Cane",
+            "Goods issued to farmers against approved seed cane requests.",
+            [],
+            buildResults(
+              ["Issue No.", "Farmer Name", "Seed Cane Variety", "Quantity (Tons)", "Issue Date"],
+              6,
+              (i) => [`GIS-${5000 + i}`, `Farmer ${i}`, ["KEN 82-247", "CO 421", "N14"][i % 3], `${i * 3}`, `2025-0${(i % 9) + 1}-2${i}`]
+            )
+          ),
+          makeReport(
+            "Goods Issue by Fertilizer",
+            "Goods issued to farmers against approved fertilizer requests.",
+            [],
+            buildResults(
+              ["Issue No.", "Farmer Name", "Fertilizer Type", "Quantity (Bags)", "Issue Date"],
+              6,
+              (i) => [`GIF-${6000 + i}`, `Farmer ${i}`, ["DAP", "CAN", "NPK"][i % 3], `${i * 6}`, `2025-0${(i % 9) + 1}-2${i}`]
+            )
+          ),
+          makeReport(
+            "Fertilizer Approved",
+            "Approved fertilizer requests ready for issue to farmers.",
+            [],
+            buildResults(
+              ["Approval No.", "Farmer Name", "Fertilizer Type", "Approved Quantity (Bags)", "Approval Date"],
+              6,
+              (i) => [`FPA-${7000 + i}`, `Farmer ${i}`, ["DAP", "CAN", "NPK"][i % 3], `${i * 7}`, `2025-0${(i % 9) + 1}-2${i}`]
+            )
+          ),
+        ],
+      },
+      {
+        id: "growth-crop-monitoring",
+        name: "Growth Crop Monitoring",
+        reports: [
+          makeReport(
+            "Age-Wise Cane Analysis",
+            "Analysis of cane fields grouped by crop age and production area.",
+            [],
+            buildResults(
+              ["Age Group", "Field Count", "Area (ha)", "Estimated Yield (Tons)"],
+              6,
+              (i) => [`${6 + i}-${7 + i} Months`, `${i * 12}`, `${(i * 18.5).toFixed(1)}`, `${i * 145}`]
+            )
+          ),
+          makeReport(
+            "Month-Wise Cane Planting",
+            "Monthly summary of cane planting activity and area planted.",
+            [],
+            buildResults(
+              ["Month", "Fields Planted", "Area Planted (ha)", "Zone"],
+              6,
+              (i) => [`2025-${String(i).padStart(2, "0")}`, `${i * 8}`, `${(i * 12.4).toFixed(1)}`, ["Zone A", "Zone B", "Zone C"][i % 3]]
+            )
+          ),
+          makeReport(
+            "Month-Wise Cane Harvesting",
+            "Monthly summary of cane fields harvested and tonnage delivered.",
+            [],
+            buildResults(
+              ["Month", "Fields Harvested", "Area Harvested (ha)", "Tonnage (Tons)"],
+              6,
+              (i) => [`2025-${String(i).padStart(2, "0")}`, `${i * 6}`, `${(i * 9.2).toFixed(1)}`, `${i * 110}`]
+            )
+          ),
+          makeReport(
+            "Month-Wise Cane Supply",
+            "Monthly summary of cane supplied to the factory by production zone.",
+            [],
+            buildResults(
+              ["Month", "Zone", "Supplied Fields", "Supply (Tons)"],
+              6,
+              (i) => [`2025-${String(i).padStart(2, "0")}`, ["Zone A", "Zone B", "Zone C"][i % 3], `${i * 5}`, `${i * 125}`]
+            )
+          ),
+          makeReport(
+            "Cane Available to Harvest",
+            "Identifies mature cane fields currently available for harvesting.",
+            [],
+            buildResults(
+              ["Field ID", "Farmer Name", "Age (Months)", "Area (ha)", "Zone"],
+              6,
+              (i) => [`FLD-${8000 + i}`, `Farmer ${i}`, `${12 + i}`, `${(i * 2.8).toFixed(1)}`, ["Zone A", "Zone B", "Zone C"][i % 3]]
+            )
+          ),
+          makeReport(
+            "Contracted but Not Planted",
+            "Contracted farmer fields that have not yet been recorded as planted.",
+            [],
+            buildResults(
+              ["Field ID", "Farmer Name", "Contracted Area (ha)", "Zone", "Contract Date"],
+              6,
+              (i) => [`FLD-${9000 + i}`, `Farmer ${i}`, `${(i * 3.1).toFixed(1)}`, ["Zone A", "Zone B", "Zone C"][i % 3], `2025-0${(i % 9) + 1}-1${i}`]
+            )
+          ),
+        ],
+      },
+      {
+        id: "harvesting-process",
+        name: "Harvesting Process",
+        reports: [
+          makeReport(
+            "Yield Assessment",
+            "Field-level yield assessment results used to support harvest planning.",
+            [],
+            buildResults(
+              ["Assessment No.", "Field ID", "Farmer Name", "Estimated Yield (Tons)", "Assessment Date"],
+              6,
+              (i) => [`YLD-${1000 + i}`, `FLD-${10000 + i}`, `Farmer ${i}`, `${i * 42}`, `2025-0${(i % 9) + 1}-1${i}`]
+            )
+          ),
+          makeReport(
+            "Harvest Plan",
+            "Planned harvest activities by field, farmer and scheduled date.",
+            [extraFilters.status],
+            buildResults(
+              ["Plan No.", "Field ID", "Farmer Name", "Planned Date", "Status"],
+              6,
+              (i) => [`HPL-${2000 + i}`, `FLD-${11000 + i}`, `Farmer ${i}`, `2025-0${(i % 9) + 1}-2${i}`, ["Planned", "Approved", "Completed"][i % 3]]
+            )
+          ),
+          makeReport(
+            "Harvest Permit",
+            "Harvest permits issued for approved cane harvesting activities.",
+            [],
+            buildResults(
+              ["Permit No.", "Field ID", "Farmer Name", "Permit Date", "Expiry Date"],
+              6,
+              (i) => [`HPR-${3000 + i}`, `FLD-${12000 + i}`, `Farmer ${i}`, `2025-0${(i % 9) + 1}-1${i}`, `2025-0${(i % 9) + 2}-1${i}`]
+            )
+          ),
+          makeReport(
+            "Harvest CCS",
+            "Harvested cane tonnage and commercial cane sugar results by field.",
+            [],
+            buildResults(
+              ["Harvest No.", "Field ID", "Cane Harvested (Tons)", "CCS %", "Harvest Date"],
+              6,
+              (i) => [`HCS-${4000 + i}`, `FLD-${13000 + i}`, `${i * 48}`, `${(10 + i * 0.4).toFixed(1)}`, `2025-0${(i % 9) + 1}-2${i}`]
+            )
+          ),
+          makeReport(
+            "CCS Reconciliation",
+            "Reconciliation of harvested cane, delivered tonnage and commercial cane sugar.",
+            [],
+            buildResults(
+              ["Reconciliation No.", "Field ID", "Delivered (Tons)", "Factory Weight (Tons)", "Variance (Tons)"],
+              6,
+              (i) => [`CCR-${5000 + i}`, `FLD-${14000 + i}`, `${i * 46}`, `${i * 45}`, `${i}`]
+            )
+          ),
+          makeReport(
+            "Harvest Plan Tracking",
+            "Progress tracking for fields included in the harvest plan.",
+            [],
+            buildResults(
+              ["Plan No.", "Field ID", "Planned Date", "Actual Date", "Progress"],
+              6,
+              (i) => [`HPT-${6000 + i}`, `FLD-${15000 + i}`, `2025-0${(i % 9) + 1}-1${i}`, `2025-0${(i % 9) + 1}-2${i}`, ["Not Started", "In Progress", "Complete"][i % 3]]
+            )
+          ),
+          makeReport(
+            "CCS Tracking",
+            "Tracks commercial cane sugar performance across harvested fields.",
+            [],
+            buildResults(
+              ["Tracking No.", "Field ID", "Cane Delivered (Tons)", "CCS %", "Status"],
+              6,
+              (i) => [`CCT-${7000 + i}`, `FLD-${16000 + i}`, `${i * 52}`, `${(10.2 + i * 0.3).toFixed(1)}`, ["Pending", "Verified", "Reconciled"][i % 3]]
+            )
+          ),
+        ],
+      },
+      {
+        id: "management-report-1",
+        name: "Management Report 1",
+        reports: [
+          makeReport(
+            "Variety-Wise Plantation Report",
+            "Cane plantation performance summarized by cane variety.",
+            [],
+            buildResults(
+              ["Variety", "Fields Planted", "Area Planted (ha)", "Planting Month"],
+              6,
+              (i) => [["KEN 82-247", "CO 421", "N14"][i % 3], `${i * 7}`, `${(i * 11.5).toFixed(1)}`, `2025-${String(i).padStart(2, "0")}`]
+            )
+          ),
+          makeReport(
+            "Month-Wise Cane Acreage Position",
+            "Monthly position of cane acreage by production zone.",
+            [],
+            buildResults(
+              ["Month", "Zone", "Planted Area (ha)", "Harvested Area (ha)"],
+              6,
+              (i) => [`2025-${String(i).padStart(2, "0")}`, ["Zone A", "Zone B", "Zone C"][i % 3], `${(i * 21.4).toFixed(1)}`, `${(i * 8.6).toFixed(1)}`]
+            )
+          ),
+          makeReport(
+            "Cane Acreage with Tonnage",
+            "Cane acreage and estimated tonnage by field and production zone.",
+            [],
+            buildResults(
+              ["Field ID", "Zone", "Area (ha)", "Estimated Tonnage (Tons)"],
+              6,
+              (i) => [`FLD-${17000 + i}`, ["Zone A", "Zone B", "Zone C"][i % 3], `${(i * 3.4).toFixed(1)}`, `${i * 58}`]
+            )
+          ),
+          makeReport(
+            "Yield Assessment (Established vs Actual)",
+            "Compares established yield expectations against actual field yields.",
+            [],
+            buildResults(
+              ["Field ID", "Established Yield (Tons)", "Actual Yield (Tons)", "Variance (Tons)"],
+              6,
+              (i) => [`FLD-${18000 + i}`, `${i * 55}`, `${i * 49}`, `${i * -6}`]
+            )
+          ),
+          makeReport(
+            "Variety and Crop Type-Wise Yield",
+            "Yield comparison by cane variety and crop type.",
+            [],
+            buildResults(
+              ["Variety", "Crop Type", "Area (ha)", "Yield (Tons)"],
+              6,
+              (i) => [["KEN 82-247", "CO 421", "N14"][i % 3], ["Plant", "Ratoon"][i % 2], `${(i * 9.3).toFixed(1)}`, `${i * 140}`]
+            )
+          ),
+          makeReport(
+            "Month-Wise Yield",
+            "Monthly yield performance across harvested cane fields.",
+            [],
+            buildResults(
+              ["Month", "Area Harvested (ha)", "Yield (Tons)", "Yield per Hectare"],
+              6,
+              (i) => [`2025-${String(i).padStart(2, "0")}`, `${(i * 14.2).toFixed(1)}`, `${i * 160}`, `${(i * 11.3).toFixed(1)}`]
+            )
+          ),
+          makeReport(
+            "Revenue Area-Wise Cane Supply",
+            "Revenue and cane supply summarized by production area.",
+            [],
+            buildResults(
+              ["Area", "Cane Supplied (Tons)", "Revenue (KES)", "Average Price (KES/Ton)"],
+              6,
+              (i) => [["Zone A", "Zone B", "Zone C"][i % 3], `${i * 175}`, `${(i * 875000).toLocaleString()}`, `${5000 + i * 100}`]
+            )
+          ),
+          makeReport(
+            "Transport-Wise Cane Area and Supply",
+            "Cane area served and tonnage supplied by transport provider.",
+            [],
+            buildResults(
+              ["Transport Provider", "Area Served (ha)", "Cane Supplied (Tons)", "Trips"],
+              6,
+              (i) => [`Transporter ${i}`, `${(i * 16.5).toFixed(1)}`, `${i * 220}`, `${i * 14}`]
+            )
+          ),
+          makeReport(
+            "Month-Wise Investment Field Yield Report",
+            "Monthly comparison of field investment and resulting cane yield.",
+            [],
+            buildResults(
+              ["Month", "Investment (KES)", "Area Supported (ha)", "Yield (Tons)"],
+              6,
+              (i) => [`2025-${String(i).padStart(2, "0")}`, `${(i * 125000).toLocaleString()}`, `${(i * 18.2).toFixed(1)}`, `${i * 190}`]
+            )
+          ),
+          makeReport(
+            "Year-Wise Activity-Wise Investment Issue and Recovery Report",
+            "Annual summary of investment issued and recovered by field activity.",
+            [],
+            buildResults(
+              ["Year", "Activity", "Investment Issued (KES)", "Investment Recovered (KES)", "Balance (KES)"],
+              6,
+              (i) => [`${2020 + i}`, ["Land Preparation", "Planting", "Fertilizer"][i % 3], `${(i * 450000).toLocaleString()}`, `${(i * 380000).toLocaleString()}`, `${(i * 70000).toLocaleString()}`]
+            )
+          ),
+        ],
+      },
       {
         id: "lead-to-service",
         name: "Lead to Service",
@@ -512,7 +887,7 @@ export const reportCategories = [
   },
   {
     id: "hr",
-    name: "HR",
+    name: "Human Resource",
     description: "Payroll and workforce management reports.",
     subcategories: [
       {
