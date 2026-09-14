@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Hero from "../components/Hero.jsx";
-import "../styles/Home.css";
 import "../styles/Site.css";
 
 function Home() {
@@ -14,7 +13,7 @@ function Home() {
         </Link>
         <nav className="site-nav" aria-label="Main navigation">
           <Link className="site-nav-link active" to="/">Home</Link>
-          <Link className="site-nav-link" to="/reports">Dashboard / Reports</Link>
+          <Link className="site-nav-link" to="/reports"> Reports</Link>
           <Link className="site-login-link" to="/login">Login</Link>
         </nav>
       </header>
