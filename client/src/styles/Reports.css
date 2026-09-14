@@ -12,17 +12,38 @@
   min-height: 70px;
   margin: 0 auto;
   padding: 0 32px;
-  display: grid;
-  grid-template-columns: minmax(300px, 1fr) auto minmax(300px, 1fr);
+  display: flex;
+  gap: 24px;
   align-items: center;
 }
 
 .reports-topbar-branding {
-  grid-column: 1;
   display: flex;
   align-items: center;
   gap: 11px;
   min-width: 0;
+  flex: 0 0 auto;
+}
+
+.reports-navigation {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 1;
+}
+
+.reports-home-link {
+  flex: none;
+  color: #d9eee0;
+  font-size: 12px;
+  font-weight: 700;
+  padding-right: 16px;
+  margin-right: 4px;
+  border-right: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.reports-home-link:hover {
+  color: #fff;
 }
 
 .reports-topbar-logo {
@@ -58,7 +79,6 @@
 }
 
 .reports-topbar-user {
-  grid-column: 3;
   justify-self: end;
   display: flex;
   align-items: center;
@@ -66,6 +86,7 @@
   margin-left: 20px;
   padding-left: 18px;
   border-left: 1px solid rgba(255, 255, 255, 0.22);
+  flex: 0 0 auto;
 }
 
 .reports-topbar-avatar {
@@ -158,14 +179,26 @@
   .reports-topbar-inner {
     min-height: 64px;
     padding: 0 12px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 12px;
   }
 
   .reports-topbar-branding {
     width: auto;
     min-height: 52px;
+  }
+
+  .reports-navigation {
+    order: 3;
+    width: 100%;
+    flex-basis: 100%;
+    overflow-x: auto;
+  }
+
+  .reports-home-link {
+    padding-right: 10px;
+    margin-right: 0;
   }
 
   .reports-topbar-brand-copy small,
@@ -175,7 +208,6 @@
 
   .reports-topbar-user {
     margin-left: auto;
-    grid-column: auto;
   }
 
   .category-menu {
