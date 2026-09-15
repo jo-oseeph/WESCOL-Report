@@ -14,7 +14,7 @@ function Home() {
         <nav className="site-nav" aria-label="Main navigation">
           <Link className="site-nav-link active" to="/">Home</Link>
           <Link className="site-nav-link" to="/reports"> Reports</Link>
-          <Link className="site-login-link" to="/login">Login</Link>
+        
         </nav>
       </header>
       <Hero />
