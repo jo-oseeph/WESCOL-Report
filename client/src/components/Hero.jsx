@@ -17,7 +17,14 @@ const heroSlides = [
 ];
 
 const initialLogin = { username: "", password: "" };
-const initialRegister = { name: "", email: "", username: "", password: "" };
+const initialRegister = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  idNumber: "",
+  password: "",
+  confirmPassword: "",
+};
 
 function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -106,6 +113,7 @@ function Hero() {
                     autoComplete="username"
                     value={login.username}
                     onChange={handleLoginChange}
+                    placeholder="Username"
                     required
                   />
                 </div>
@@ -119,6 +127,7 @@ function Hero() {
                     autoComplete="current-password"
                     value={login.password}
                     onChange={handleLoginChange}
+                    placeholder="Password"
                     required
                   />
                 </div>
@@ -135,21 +144,35 @@ function Hero() {
               </form>
             ) : (
               <form className="auth-form" onSubmit={handleRegisterSubmit}>
-                <div className="auth-field">
-                  <label htmlFor="name">Full name</label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    autoComplete="name"
-                    value={register.name}
-                    onChange={handleRegisterChange}
-                    required
-                  />
+                <div className="auth-inline-grid">
+                  <div className="auth-field">
+                    <input
+                      id="firstName"
+                      name="firstName"
+                      type="text"
+                      autoComplete="given-name"
+                      value={register.firstName}
+                      onChange={handleRegisterChange}
+                      placeholder="First name"
+                      required
+                    />
+                  </div>
+
+                  <div className="auth-field">
+                    <input
+                      id="lastName"
+                      name="lastName"
+                      type="text"
+                      autoComplete="family-name"
+                      value={register.lastName}
+                      onChange={handleRegisterChange}
+                      placeholder="Last name"
+                      required
+                    />
+                  </div>
                 </div>
 
                 <div className="auth-field">
-                  <label htmlFor="email">Email</label>
                   <input
                     id="email"
                     name="email"
@@ -157,25 +180,25 @@ function Hero() {
                     autoComplete="email"
                     value={register.email}
                     onChange={handleRegisterChange}
+                    placeholder="Email address"
                     required
                   />
                 </div>
 
                 <div className="auth-field">
-                  <label htmlFor="reg-username">Username</label>
                   <input
-                    id="reg-username"
-                    name="username"
+                    id="idNumber"
+                    name="idNumber"
                     type="text"
-                    autoComplete="username"
-                    value={register.username}
+                    autoComplete="off"
+                    value={register.idNumber}
                     onChange={handleRegisterChange}
+                    placeholder="ID number"
                     required
                   />
                 </div>
 
                 <div className="auth-field">
-                  <label htmlFor="reg-password">Password</label>
                   <input
                     id="reg-password"
                     name="password"
@@ -183,6 +206,7 @@ function Hero() {
                     autoComplete="new-password"
                     value={register.password}
                     onChange={handleRegisterChange}
+                    placeholder="Password"
                     required
                   />
                 </div>
