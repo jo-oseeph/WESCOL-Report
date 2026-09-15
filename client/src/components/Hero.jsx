@@ -3,16 +3,32 @@ import "../styles/Hero.css";
 
 const heroSlides = [
   {
-    url: "https://images.pexels.com/photos/36976807/pexels-photo-36976807.jpeg?auto=compress&cs=tinysrgb&w=1920",
-    alt: "Sugarcane fields stretching under a clear sky",
+    url: "/images/auth-slide-1.jpg",
+    alt: "Sugarcane field and processing environment",
   },
   {
-    url: "https://images.pexels.com/photos/33626643/pexels-photo-33626643.jpeg?auto=compress&cs=tinysrgb&w=1920",
-    alt: "Aerial view of an industrial sugar factory complex",
+    url: "/images/auth-slide-2.jpg",
+    alt: "Harvested sugarcane in the field",
   },
   {
-    url: "https://images.pexels.com/photos/35778504/pexels-photo-35778504.jpeg?auto=compress&cs=tinysrgb&w=1920",
-    alt: "Farm workers loading harvested sugarcane for transport",
+    url: "/images/auth-slide-3.jpg",
+    alt: "Operational sugar production facilities",
+  },
+  {
+    url: "/images/auth-slide-4.jpg",
+    alt: "Field and transport scene in the sugar estate",
+  },
+  {
+    url: "/images/auth-slide-5.jpg",
+    alt: "Additional sugar industry image",
+  },
+  {
+    url: "/images/auth-slide-6.jpg",
+    alt: "Additional field and transport view",
+  },
+  {
+    url: "/images/auth-slide-7.jpg",
+    alt: "Additional sugar estate landscape",
   },
 ];
 
