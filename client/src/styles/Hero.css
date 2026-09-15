@@ -304,11 +304,11 @@
 .auth-panel-inner {
   width: min(100%, 380px);
   padding: 32px 30px 26px;
-  background: rgba(226, 239, 230, 0.88);
+  background: rgba(232, 246, 234, 0.92);
   border: 1px solid rgba(20, 83, 45, 0.12);
   border-top: 4px solid #79c98b;
   border-radius: 12px;
-  box-shadow: 0 24px 48px rgba(4, 24, 14, 0.18);
+  box-shadow: 0 24px 48px rgba(4, 24, 14, 0.16);
 }
 
 .auth-header {
@@ -318,8 +318,8 @@
 .auth-title {
   color: #123f2b;
   font-size: clamp(1.6rem, 2vw, 2rem);
-  font-weight: 800;
-  letter-spacing: -0.6px;
+  font-weight: 500;
+  letter-spacing: -0.4px;
 }
 
 .auth-title::after {
